@@ -5,65 +5,65 @@
 
     <application title="Java JDK">
       <version title="1.6 x86">
-	<variable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</variable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</setVariable>
       </version>
       <version title="1.6 amd64" default="true">
-	<variable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</variable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</setVariable>
       </version>
       <version title="1.5 amd64">
-	<variable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</variable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</setVariable>
       </version>
       <version title="1.5 x86">
-	<variable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</variable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</setVariable>
       </version>
     </application>
 
     <application title="Maven">
       <version title="2.2.x" default="true">
-	<variable name="MAVEN_HOME">/opt/apache-maven-2.2.1</variable>
+	<setVariable name="MAVEN_HOME">/opt/apache-maven-2.2.1</setVariable>
       </version>
       <version title="3.0.x">
-	<variable name="MAVEN_HOME">/opt/apache-maven-3.0.3</variable>
+	<setVariable name="MAVEN_HOME">/opt/apache-maven-3.0.3</setVariable>
       </version>
     </application>
 
     <application title="Apache ANT">
       <version title="1.8.0" default="true">
-	<variable name="ANT_HOME">/opt/apache-ant-1.8.0</variable>
+	<setVariable name="ANT_HOME">/opt/apache-ant-1.8.0</setVariable>
       </version>
 
     </application>
 
     <application title="Eclipse">
       <version title="Galileo">
-	<variable name="ECLIPSE_HOME">/opt/eclipse-galileo</variable>
+	<setVariable name="ECLIPSE_HOME">/opt/eclipse-galileo</setVariable>
       </version>
       <version title="Helios" default="true">
-	<variable name="ECLIPSE_HOME">/opt/eclipse-helios</variable>
+	<setVariable name="ECLIPSE_HOME">/opt/eclipse-helios</setVariable>
       </version>
     </application>
 
     <application title="Apache Tomcat">
       <version title="5.5.x">
-	<variable name="CATALINA_HOME">/opt/apache-tomcat-5.5</variable>
+	<setVariable name="CATALINA_HOME">/opt/apache-tomcat-5.5</setVariable>
       </version>
       <version title="6.0.x">
-	<variable name="CATALINA_HOME">/opt/apache-tomcat-6.0.26a</variable>
+	<setVariable name="CATALINA_HOME">/opt/apache-tomcat-6.0.26a</setVariable>
       </version>
       <version title="7.0.x" default="true">
-	<variable name="CATALINA_HOME">/opt/apache-tomcat-7.0.6</variable>
+	<setVariable name="CATALINA_HOME">/opt/apache-tomcat-7.0.6</setVariable>
       </version>
     </application>
 
     <application title="Ruby">
       <version title="1.9.2" default="true">
-	<variable name="RUBY_HOME">/opt/ruby-1.9.2-p136</variable>
+	<setVariable name="RUBY_HOME">/opt/ruby-1.9.2-p136</setVariable>
       </version>
     </application>
 
     <application title="Node.js">
       <version title="0.4.8" default="true">
-	<variable name="NODEJS_HOME">/opt/node-0.4.8</variable>
+	<setVariable name="NODEJS_HOME">/opt/node-0.4.8</setVariable>
       </version>
     </application>
 
@@ -73,55 +73,55 @@
 
     <application title="Java JDK">
       <version title="1.6 amd64" default="true">
-	<variable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</variable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</setVariable>
       </version>
       <version title="1.6 x86">
-	<variable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</variable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</setVariable>
       </version>
       <version title="1.5 amd64">
-	<variable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</variable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</setVariable>
       </version>
       <version title="1.5 x86">
-	<variable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</variable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</setVariable>
       </version>
     </application>
 
   </environment>
 
-  <script if="JAVA_HOME">
-    <variable name="JAVA_HOME"/>
-    <variable name="JRE_HOME">${JAVA_HOME}</variable>
-    <variable name="PATH">${JAVA_HOME}/bin:${PATH}</variable>
+  <script ifSet="JAVA_HOME">
+    <printVariable name="JAVA_HOME"/>
+    <print>JRE_HOME=${JAVA_HOME}</print>
+    <print>PATH=${JAVA_HOME}/bin:${PATH}</print>
   </script>
   
-  <script if="MAVEN_HOME">
-    <variable name="MAVEN_HOME"/>
-    <variable name="PATH">${MAVEN_HOME}/bin:${PATH}</variable>
+  <script ifSet="MAVEN_HOME">
+    <printVariable name="MAVEN_HOME"/>
+    <print>PATH=${MAVEN_HOME}/bin:${PATH}</print>
   </script>
   
-  <script if="ANT_HOME">
-    <variable name="ANT_HOME"/>
-    <variable name="PATH">${ANT_HOME}/bin:${PATH}</variable>
+  <script ifSet="ANT_HOME">
+    <printVariable name="ANT_HOME"/>
+    <print>PATH=${ANT_HOME}/bin:${PATH}</print>
   </script>
   
-  <script if="ECLIPSE_HOME">
-    <variable name="ECLIPSE_HOME"/>
-    <variable name="PATH">${ECLIPSE_HOME}/bin:${PATH}</variable>
+  <script ifSet="ECLIPSE_HOME">
+    <printVariable name="ECLIPSE_HOME"/>
+    <print>PATH=${ECLIPSE_HOME}/bin:${PATH}</print>
   </script>
 
-  <script if="CATALINA_HOME">
-    <variable name="CATALINA_HOME"/>
-    <variable name="PATH">${CATALINA_HOME}/bin:${PATH}</variable>
+  <script ifSet="CATALINA_HOME">
+    <printVariable name="CATALINA_HOME"/>
+    <print>PATH=${CATALINA_HOME}/bin:${PATH}</print>
   </script>
 
-  <script if="RUBY_HOME">
-    <variable name="RUBY_HOME"/>
-    <variable name="PATH">${RUBY_HOME}/bin:${PATH}</variable>
+  <script ifSet="RUBY_HOME">
+    <printVariable name="RUBY_HOME"/>
+    <print>PATH=${RUBY_HOME}/bin:${PATH}</print>
   </script>
 
-  <script if="NODEJS_HOME">
-    <variable name="NODEJS_HOME"/>
-    <variable name="PATH">${NODEJS_HOME}/bin:${PATH}</variable>
+  <script ifSet="NODEJS_HOME">
+    <printVariable name="NODEJS_HOME"/>
+    <print>PATH=${NODEJS_HOME}/bin:${PATH}</print>
   </script>
 
 </environments>

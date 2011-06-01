@@ -36,7 +36,6 @@ class Setting:
 class Environment:
 
     def __init__(self, master, environment_node):
-        self.settings = dict()
         self.id = environment_node.get("id")
         self.name = environment_node.get("name")
         self.settings = []
