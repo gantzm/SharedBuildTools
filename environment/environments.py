@@ -7,6 +7,40 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 
+class Print:
+    
+    def __init__(self, command_node):
+        self.value = command_node.text
+
+    def execute(self):
+        print self.value
+
+class PrintVariable:
+
+    def __init__(self, command_node):
+        self.name = command_node.get("name")
+
+    def execute(self):
+        if public_variables.has_key( self.name ):
+            print self.name + "=" + public_variables[self.name]
+
+class Script:
+    
+    def __init__(self, script_node):
+        self.ifSet = script_node.get("ifSet")
+        self.commands = []
+
+        for command_node in script_node.xpath("./*"):
+            if command_node.tag == "printVariable":
+                self.commands.append( PrintVariable(command_node) )
+            if command_node.tag == "print":
+                self.commands.append( Print(command_node) )
+
+    def execute(self):
+        if public_variables.has_key( self.ifSet ):
+            for command in self.commands:
+                command.execute()
+
 class SetVariable:
 
     def __init__(self, command_node):
@@ -76,12 +110,16 @@ class Environments:
 
     def __init__(self, environments_filename):
         self.environments = []
+        self.scripts = []
         self.selected_environment = None
 
         tree = etree.parse(environments_filename)
+
         for environment_node in tree.xpath("/environments/environment"):
-            environment = Environment(environment_node)
-            self.environments.append(environment)
+            self.environments.append( Environment(environment_node) )
+
+        for script_node in tree.xpath("/environments/script"):
+            self.scripts.append( Script(script_node) )
 
     def select_environment(self, environment):
         self.selected_environment = environment
@@ -89,6 +127,8 @@ class Environments:
     def execute(self):
         if self.selected_environment != None:
             self.selected_environment.execute()
+        for script in self.scripts:
+            script.execute()
 
 class EnvironmentSelector:
 
@@ -100,7 +140,7 @@ class EnvironmentSelector:
         self.environments = Environments(sys.argv[1])
 
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        self.window.set_title("Hello Buttons!")
+        self.window.set_title("Environment Selector")
         self.window.connect("delete_event", self.delete_event)
         self.window.set_border_width(10)
 
@@ -130,29 +170,25 @@ class EnvironmentSelector:
 
         self.window.show()
 
-    def callback(self, widget, data=None):
-        print "Hello again - %s was pressed" % data
-
     def delete_event(self, widget, event, data=None):
         gtk.main_quit()
         return False
 
     def do_ok(self, button):
         self.environments.execute()
-        for variable_name in public_variables.keys():
-            print "variable " + variable_name + " = " + public_variables[variable_name]
-
+        gtk.main_quit()
+        return False
 
     def do_cancel(self, button):
-        print "CANCEL!";
+        sys.stderr.write('Cancel\n')
+        gtk.main_quit()
+        return False
 
     def do_version_selected(self, button, application, version):
-        print "Version Selected", version
         application.select_version(version)
 
     def do_environment_select(self, notebook, page, page_num):
         self.environments.select_environment(self.environments.environments[page_num])
-        print "selected environment", self.environments.selected_environment
     
     def create_notebook_tab(self, environment):
 
