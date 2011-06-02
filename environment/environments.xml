@@ -5,16 +5,16 @@
 
     <application title="Java JDK">
       <version title="1.6 x86">
-	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</setVariable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_15-i586</setVariable>
       </version>
       <version title="1.6 amd64" default="true">
 	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</setVariable>
       </version>
       <version title="1.5 amd64">
-	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</setVariable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.5.0_22-amd64</setVariable>
       </version>
       <version title="1.5 x86">
-	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</setVariable>
+	<setVariable name="JAVA_HOME">/opt/jdk-1.5.0_21-i586</setVariable>
       </version>
     </application>
 
@@ -48,7 +48,7 @@
 	<setVariable name="CATALINA_HOME">/opt/apache-tomcat-5.5</setVariable>
       </version>
       <version title="6.0.x">
-	<setVariable name="CATALINA_HOME">/opt/apache-tomcat-6.0.26a</setVariable>
+	<setVariable name="CATALINA_HOME">/opt/apache-tomcat-6.0.26</setVariable>
       </version>
       <version title="7.0.x" default="true">
 	<setVariable name="CATALINA_HOME">/opt/apache-tomcat-7.0.6</setVariable>
@@ -90,38 +90,45 @@
 
   <script ifSet="JAVA_HOME">
     <printVariable name="JAVA_HOME"/>
-    <print>JRE_HOME=${JAVA_HOME}</print>
-    <print>PATH=${JAVA_HOME}/bin:${PATH}</print>
+    <print>export JAVA_HOME</print>
+    <print>export JRE_HOME=${JAVA_HOME}</print>
+    <print>export PATH=${JAVA_HOME}/bin:${PATH}</print>
   </script>
   
   <script ifSet="MAVEN_HOME">
     <printVariable name="MAVEN_HOME"/>
-    <print>PATH=${MAVEN_HOME}/bin:${PATH}</print>
+    <print>export MAVEN_HOME</print>
+    <print>export PATH=${MAVEN_HOME}/bin:${PATH}</print>
   </script>
   
   <script ifSet="ANT_HOME">
     <printVariable name="ANT_HOME"/>
-    <print>PATH=${ANT_HOME}/bin:${PATH}</print>
+    <print>export ANT_HOME</print>
+    <print>export PATH=${ANT_HOME}/bin:${PATH}</print>
   </script>
   
   <script ifSet="ECLIPSE_HOME">
     <printVariable name="ECLIPSE_HOME"/>
-    <print>PATH=${ECLIPSE_HOME}/bin:${PATH}</print>
+    <print>export ECLIPSE_HOME</print>
+    <print>export PATH=${ECLIPSE_HOME}/bin:${PATH}</print>
   </script>
 
   <script ifSet="CATALINA_HOME">
     <printVariable name="CATALINA_HOME"/>
-    <print>PATH=${CATALINA_HOME}/bin:${PATH}</print>
+    <print>export CATALINA_HOME</print>
+    <print>export PATH=${CATALINA_HOME}/bin:${PATH}</print>
   </script>
 
   <script ifSet="RUBY_HOME">
     <printVariable name="RUBY_HOME"/>
-    <print>PATH=${RUBY_HOME}/bin:${PATH}</print>
+    <print>export RUBY_HOME</print>
+    <print>export PATH=${RUBY_HOME}/bin:${PATH}</print>
   </script>
 
   <script ifSet="NODEJS_HOME">
     <printVariable name="NODEJS_HOME"/>
-    <print>PATH=${NODEJS_HOME}/bin:${PATH}</print>
+    <print>export NODEJS_HOME</print>
+    <print>export PATH=${NODEJS_HOME}/bin:${PATH}</print>
   </script>
 
 </environments>
