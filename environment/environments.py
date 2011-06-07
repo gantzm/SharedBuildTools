@@ -193,11 +193,24 @@ class EnvironmentSelector:
     def create_notebook_tab(self, environment):
 
         tab_pane_box = gtk.VBox(False, 0)
-        
+
+        app_count = 0;
+
         for application in environment.applications:
-            application_label = gtk.Label(application.title)
+
+            if app_count > 0:
+                sep = gtk.HSeparator()
+                sep.show();
+                tab_pane_box.pack_start( sep, expand=False, padding=5)
+
+            app_count = app_count + 1
+
+            application_label = gtk.Label("<b>" + application.title + "</b>")
+            application_label.set_use_markup(gtk.TRUE);
             application_label.show()
+            
             application_alignment = gtk.Alignment(xalign=0, xscale=0)
+            application_alignment.set_padding(0, 0, 5, 0)
             application_alignment.add(application_label)
             application_alignment.show()
             tab_pane_box.pack_start(application_alignment, expand=False, padding=5)
