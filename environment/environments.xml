@@ -1,6 +1,49 @@
 
 <environments>
 
+  <environment id="m6600.laptop" name="Dell M6600 Laptop">
+
+    <application title="Java JDK">
+      <version title="1.7 amd64">
+	<setVariable name="JAVA_HOME">/opt/jdk-1.7.0_2</setVariable>
+      </version>
+      <version title="1.6 amd64" default="true">
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_26</setVariable>
+      </version>
+      <version title="1.6 i586">
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_27_i586</setVariable>
+      </version>
+    </application>
+
+    <application title="Maven">
+      <version title="2.2.1">
+	<setVariable name="MAVEN_HOME">/opt/apache-maven-2.2.1</setVariable>
+      </version>
+      <version title="3.0.3" default="true">
+	<setVariable name="MAVEN_HOME">/opt/apache-maven-3.0.3</setVariable>
+      </version>
+    </application>
+
+    <application title="Apache ANT">
+      <version title="1.8.2" default="true">
+	<setVariable name="ANT_HOME">/opt/apache-ant-1.8.2</setVariable>
+      </version>
+    </application>
+
+    <application title="Eclipse">
+      <version title="Helios">
+	<setVariable name="ECLIPSE_HOME">/opt/eclipse-helios</setVariable>
+      </version>
+      <version title="Indigo" default="true">
+	<setVariable name="ECLIPSE_HOME">/opt/eclipse-indigo</setVariable>
+      </version>
+      <version title="Indigo SR1">
+	<setVariable name="ECLIPSE_HOME">/opt/eclipse-indigo-sr1</setVariable>
+      </version>
+    </application>
+
+  </environment>
+
   <environment id="d820.laptop" name="Dell D820 Laptop">
 
     <application title="Java JDK">
@@ -41,6 +84,9 @@
       <version title="Helios" default="true">
 	<setVariable name="ECLIPSE_HOME">/opt/eclipse-helios</setVariable>
       </version>
+      <version title="Indigo">
+	<setVariable name="ECLIPSE_HOME">/opt/eclipse-indigo</setVariable>
+      </version>
     </application>
 
     <application title="Apache Tomcat">
@@ -64,25 +110,6 @@
     <application title="Node.js">
       <version title="0.4.8" default="true">
 	<setVariable name="NODEJS_HOME">/opt/node-0.4.8</setVariable>
-      </version>
-    </application>
-
-  </environment>
-
-  <environment id="m6600.laptop" name="Dell M6600 Laptop">
-
-    <application title="Java JDK">
-      <version title="1.6 amd64" default="true">
-	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</setVariable>
-      </version>
-      <version title="1.6 x86">
-	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</setVariable>
-      </version>
-      <version title="1.5 amd64">
-	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-amd64</setVariable>
-      </version>
-      <version title="1.5 x86">
-	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_18-x86</setVariable>
       </version>
     </application>
 
