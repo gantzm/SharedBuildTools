@@ -4,11 +4,14 @@
   <environment id="m6600.laptop" name="Dell M6600 Laptop">
 
     <application title="Java JDK">
-      <version title="1.7 amd64">
-	<setVariable name="JAVA_HOME">/opt/jdk-1.7.0_2</setVariable>
+      <version title="1.7u7 amd64" default="true" >
+	<setVariable name="JAVA_HOME">/opt/jdk-1.7.0_07</setVariable>
       </version>
-      <version title="1.6 amd64" default="true">
-	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_26</setVariable>
+      <version title="1.7 amd64">
+	<setVariable name="JAVA_HOME">/opt/jdk-1.7.0_03</setVariable>
+      </version>
+      <version title="1.6 amd64">
+	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_30</setVariable>
       </version>
       <version title="1.6 i586">
 	<setVariable name="JAVA_HOME">/opt/jdk-1.6.0_27_i586</setVariable>
@@ -19,8 +22,12 @@
       <version title="2.2.1">
 	<setVariable name="MAVEN_HOME">/opt/apache-maven-2.2.1</setVariable>
       </version>
-      <version title="3.0.3" default="true">
+      <version title="3.0.3">
 	<setVariable name="MAVEN_HOME">/opt/apache-maven-3.0.3</setVariable>
+      </version>
+      <version title="3.0.4" default="true">
+	<setVariable name="MAVEN_HOME">/opt/apache-maven-3.0.4</setVariable>
+	<setVariable name="MAVEN_OPTS">"-Xmx2048M -XX:MaxPermSize=512M"</setVariable>
       </version>
     </application>
 
@@ -34,11 +41,14 @@
       <version title="Helios">
 	<setVariable name="ECLIPSE_HOME">/opt/eclipse-helios</setVariable>
       </version>
-      <version title="Indigo" default="true">
+      <version title="Indigo">
 	<setVariable name="ECLIPSE_HOME">/opt/eclipse-indigo</setVariable>
       </version>
       <version title="Indigo SR1">
 	<setVariable name="ECLIPSE_HOME">/opt/eclipse-indigo-sr1</setVariable>
+      </version>
+      <version title="Juno" default="true">
+	<setVariable name="ECLIPSE_HOME">/opt/eclipse-juno</setVariable>
       </version>
     </application>
 
@@ -126,6 +136,11 @@
     <printVariable name="MAVEN_HOME"/>
     <print>export MAVEN_HOME</print>
     <print>export PATH=${MAVEN_HOME}/bin:${PATH}</print>
+  </script>
+
+  <script ifSet="MAVEN_OPTS">
+    <printVariable name="MAVEN_OPTS"/>
+    <print>export MAVEN_OPTS</print>
   </script>
   
   <script ifSet="ANT_HOME">
