@@ -54,6 +54,38 @@
 
   </environment>
 
+  <environment id="m6600.ubuntu" name="Ubuntu">
+
+    <application title="Java JDK">
+      <version title="1.7.0_07 amd64" default="true" >
+	<setVariable name="JAVA_HOME">/workspace/apps/jdk-1.7.0_07</setVariable>
+      </version>
+      <version title="1.6.0_32 amd64" >
+	<setVariable name="JAVA_HOME">/workspace/apps/jdk-1.6.0_32</setVariable>
+      </version>
+    </application>
+
+    <application title="Maven">
+      <version title="3.0.4" default="true">
+	<setVariable name="MAVEN_HOME">/workspace/apps/apache-maven-3.0.4</setVariable>
+	<setVariable name="MAVEN_OPTS">"-Xmx2048M -XX:MaxPermSize=512M"</setVariable>
+      </version>
+    </application>
+
+    <application title="Apache ANT">
+      <version title="1.8.2" default="true">
+	<setVariable name="ANT_HOME">/opt/apache-ant-1.8.2</setVariable>
+      </version>
+    </application>
+
+    <application title="Eclipse">
+      <version title="Juno" default="true">
+	<setVariable name="ECLIPSE_HOME">/workspace/apps/eclipse-juno</setVariable>
+      </version>
+    </application>
+
+  </environment>
+
   <environment id="d820.laptop" name="Dell D820 Laptop">
 
     <application title="Java JDK">
