@@ -185,6 +185,7 @@
     <printVariable name="ECLIPSE_HOME"/>
     <print>export ECLIPSE_HOME</print>
     <print>export PATH=${ECLIPSE_HOME}:${PATH}</print>
+    <print>export GDK_NATIVE_WINDOWS=true</print>
   </script>
 
   <script ifSet="CATALINA_HOME">
