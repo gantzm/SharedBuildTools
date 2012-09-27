@@ -186,6 +186,7 @@
     <print>export ECLIPSE_HOME</print>
     <print>export PATH=${ECLIPSE_HOME}:${PATH}</print>
     <print>export GDK_NATIVE_WINDOWS=true</print>
+    <print>export LIBOVERLAY_SCROLLBAR=0</print>
   </script>
 
   <script ifSet="CATALINA_HOME">

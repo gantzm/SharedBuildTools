@@ -1,3 +1,11 @@
+MG_SCRIPT_DIR="/workspace/SharedBuildTools"
+
 unalias ls
-alias senv='. /projects/SharedBuildTools/environment/environments.sh'
+alias senv='. ${MG_SCRIPT_DIR}/environment/environments.sh'
+
+export PATH=${MG_SCRIPT_DIR}/scripts:${PATH}
 export GDK_NATIVE_WINDOWS=true
+export LIBOVERLAY_SCROLLBAR=0
+
+# Old style scrollbars on Ubuntu
+gsettings set org.gnome.desktop.interface ubuntu-overlay-scrollbars false
